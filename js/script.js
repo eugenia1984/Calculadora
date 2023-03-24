@@ -75,21 +75,14 @@ document.addEventListener("DOMContentLoaded", function () {
 //Creo la funcion calcular() que recibe como parametros dos numeros y el operador para hacer el calculo
 function calcular(n1, operador, n2) {
   let resultado = ""; //variable auxiliar en la que guardo el resultado
-  switch (operador) {
-    case "sumar":
-      resultado = parseFloat(n1) - parseFloat(n2);
-      break;
-    case "restar":
-      resultado = parseFloat(n1) - parseFloat(n2);
-      break;
-    case "multiplicar":
-      resultado = parseFloat(n1) * parseFloat(n2);
-      break;
-    case "dividir":
-      n2 === 0
-        ? (resultado = "ERROR")
-        : (resultado = parseFloat(n1) / parseFloat(n2));
-      break;
+  if (operador === "sumar") {
+    resultado = parseFloat(n1) + parseFloat(n2);
+  } else if (operador === "restar") {
+    resultado = parseFloat(n1) - parseFloat(n2);
+  } else if (operador === "multiplicar") {
+    resultado = parseFloat(n1) * parseFloat(n2);
+  } else if (operador === "dividir") {
+    resultado = parseFloat(n1) / parseFloat(n2);
   }
   return resultado;
 }
