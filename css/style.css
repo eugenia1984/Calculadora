@@ -1,9 +1,28 @@
 /*Google Font: roboto*/
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+:root {
+  --bg-display: #513c57;
+  --bg-orange: #ef983c;
+  --bg-light-gray: #78647e;
+  --bg-dark-gray: #513c57;
+  --bg-violet: #672a81;
+  --bg-shadow: rgba(0, 0, 0, 0.25);
+  --white: #fff;
+}
 body {
   align-items: center;
-  background-image: linear-gradient(236deg, #74ebd5, #acb6e5);
+  background-image: linear-gradient(
+    to right top,
+    #543ccc,
+    #672a81,
+    #943dbb,
+    #8b42d0,
+    #bd48b3,
+    #d844aa,
+    #d786b4,
+    #cfb5d3
+  );
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,19 +34,23 @@ body {
 h1,
 p {
   text-align: center;
+  color: var(--white);
 }
 
 h1 {
   padding-top: 2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 p {
   padding: 1.5rem 1rem;
+  font-size: 18px;
 }
 
 /*** Calculator ***/
 .calculator {
   border-radius: 7px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 10px 10px 5px 0px var(--bg-shadow);
   margin-left: auto;
   margin-right: auto;
   margin-top: 2em;
@@ -40,15 +63,15 @@ p {
 }
 
 .calculator-display {
-  background-color: #222222;
-  color: #fff;
+  background-color: var(--bg-display);
+  color: var(--white);
   font-size: 1.8em;
   padding: 0.5em 0.75em;
   text-align: right;
 }
 
 .calculator-buttons {
-  background-color: #999;
+  background-color: var(--bg-light-gray);
   display: grid;
   grid-gap: 3px;
   grid-template-columns: repeat(4, 1fr);
@@ -61,31 +84,36 @@ p {
 }
 
 .calculator-buttons > button:hover {
-  background-color: #fff;
+  background-color: var(--bg-violet);
 }
 
 .calculator-buttons > button:focus {
-  background-color: darkgray;
+  background-color: var(--bg-dark-gray);
 }
 
 .key-operator {
-  background-color: rgb(235, 222, 106);
+  background-color: var(--bg-orange);
   font-weight: 800;
 }
 
 .key-equal {
-  background-image: linear-gradient(to bottom, #fe886a, #ff7033);
+  background-image: linear-gradient(to bottom, #ef983c, #ef983c);
   grid-column: -2;
   grid-row: 2 / span 4;
 }
 
 /*** Footer ***/
+footer p {
+  color: var(--white);
+  line-height: 1.9;
+}
+
 footer a {
   text-decoration: none;
   color: #fe886a;
   font-weight: 800;
-  background-color: #fff;
-  padding: 6px 12px;
+  background-color: var(--white);
+  padding: 4px 8px;
   border-radius: 7px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;

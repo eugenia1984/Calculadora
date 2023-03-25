@@ -1,27 +1,71 @@
-//Agrego un addEventListener al document y paso como parámetros el DOMContentLoader y una funcion
-document.addEventListener("DOMContentLoaded", function () {
-  //Accedo al DOM guardando mis elementos del HTML en variables
-  const calculadora = document.querySelector(".calculator");
+const d = document;
+
+/*** Operaciones para poder realizar la función calcular ***/
+const sumar = (num1, num2) => {
+  return parseFloat(num1) + parseFloat(num2);
+};
+
+const restar = (num1, num2) => {
+  return parseFloat(num1) - parseFloat(num2);
+};
+
+const multiplicar = (num1, num2) => {
+  return parseFloat(num1) * parseFloat(num2);
+};
+
+const dividir = (num1, num2) => {
+  return num2 === 0
+    ? "No se puede dividir por cero"
+    : parseFloat(num1) / parseFloat(num2);
+};
+
+/** FUNCION CALCULAR:
+ * param1: primer numero ingresado
+ * param2: operador para realizar el calculo
+ * param3: segundo numero ingresado
+ ***/
+const calcular = (num1, operador, num2) => {
+  let resultado = "";
+
+  switch (operador) {
+    case "sumar":
+      resultado = sumar(num1, num2);
+      break;
+    case "restar":
+      resultado = restar(num1, num2);
+      break;
+    case "multiplicar":
+      resultado = multiplicar(num1, num2);
+      break;
+    case "dividir":
+      resultado = dividir(num1, num2);
+      break;
+    default:
+      resultado = "ERROR";
+      break;
+  }
+
+  return resultado;
+};
+
+d.addEventListener("DOMContentLoaded", function () {
+  const calculadora = d.querySelector(".calculator");
   const botones = calculadora.querySelector(".calculator-buttons");
-  const display = document.querySelector(".calculator-display");
+  const display = d.querySelector(".calculator-display");
+
   //Uso el método .addEventListener y le paso el atributo ONCLICK y otro segundo atributo que es una ARROW FUNCTION
   botones.addEventListener("click", (e) => {
-    // e es el evento que dispara, al que voy a hacer target, para ver si hay un match de que sea un botón, si no lo es lo ignora
+    // e (evento que dispara, al que voy a hacer target, para ver si hay un match de que sea un botón, si no lo es lo ignora)
     if (e.target.matches("button")) {
-      const tecla = e.target;
-      //accedo a la tecla para ver que el evento de hacer click sea en un boton y la guardo en una varaible que nombro tecla y es constante
+      const tecla = e.target; //accedo a la tecla para ver que el evento de hacer click sea en un boton
       const accion = tecla.dataset.accion;
-      //accedo a la accion de la tecla mediante el data-set
       const contenidoDelBoton = tecla.textContent;
-      //Trabajo con lo que tengo en el boton
       const numeroMostrado = display.textContent;
-      //lo que ve se en el display
       const teclaTipeadaAnteriormente =
         calculadora.dataset.teclaTipeadaAnteriormente;
 
       if (!accion) {
-        //niego la accion, ac va a ser un numero que no tiene data-accion
-        console.log("boton de numero!");
+        console.log("NÚMERO!");
         //Para que en el display me muestre los numeros que voy haciendo click
         if (
           numeroMostrado === "0" ||
@@ -39,20 +83,20 @@ document.addEventListener("DOMContentLoaded", function () {
         accion === "multiplicar" ||
         accion === "dividir"
       ) {
-        console.log("boton de operacion!");
+        console.log("OPERACION!");
         //Seteo estados
         calculadora.dataset.teclaTipeadaAnteriormente = "operador";
         calculadora.dataset.primerValor = numeroMostrado;
         calculadora.dataset.operador = accion;
       }
       if (accion === "decimal") {
-        console.log("boton decimal!");
+        console.log("DECIMAL!");
         display.textContent = numeroMostrado + ".";
         calculadora.dataset.teclaTipeadaAnteriormente = "decimal";
       }
 
       if (accion === "borrar") {
-        console.log("boton de borrar!");
+        console.log("BORRANDO!");
         display.textContent = 0;
         //Para des setear que quede el mismo numero y ultimo operador seteado, para que no se repita la ultima operacion
         calculadora.dataset.teclaTipeadaAnteriormente = "";
@@ -71,18 +115,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-//Creo la funcion calcular() que recibe como parametros dos numeros y el operador para hacer el calculo
-function calcular(n1, operador, n2) {
-  let resultado = ""; //variable auxiliar en la que guardo el resultado
-  if (operador === "sumar") {
-    resultado = parseFloat(n1) + parseFloat(n2);
-  } else if (operador === "restar") {
-    resultado = parseFloat(n1) - parseFloat(n2);
-  } else if (operador === "multiplicar") {
-    resultado = parseFloat(n1) * parseFloat(n2);
-  } else if (operador === "dividir") {
-    resultado = parseFloat(n1) / parseFloat(n2);
-  }
-  return resultado;
-}
