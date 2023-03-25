@@ -8,7 +8,10 @@ La cuarta práctica del curso de **React** con **Codo a Codo**.
 
 ## Demo
 
-:computer: Haciendo click aca  -> [https://eugenia1984.github.io/Calculadora/](https://eugenia1984.github.io/Calculadora/)
+:computer: Haciendo click aca  -> [https://eugenia1984.github.io/Calculadora/](https://eugenia1984.github.io/Calculadora/) la pueden probar.
+
+![image](https://user-images.githubusercontent.com/72580574/227734189-b101bcaa-089a-40f2-aca1-91e51e6558fd.png)
+
 
 ---
 
